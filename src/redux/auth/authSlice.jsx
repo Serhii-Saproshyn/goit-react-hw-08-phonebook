@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register } from 'redux/auth/operations';
+import { register, logIn, logOut } from 'redux/auth/operations';
 
 const initialState = {
   user: {
     name: '',
-    mail: '',
+    email: '',
   },
   token: null,
 };
@@ -14,14 +14,19 @@ const authSlice = createSlice({
   initialState,
 
   extraReducers: builder => {
-    builder.addCase(
-      register.fulfilled,
-      (state, { payload: { user, token } }) => {
-        console.log(user, token);
+    builder
+      .addCase(register.fulfilled, (state, { payload: { user, token } }) => {
         state.token = token;
         state.user = user;
-      }
-    );
+      })
+      .addCase(logIn.fulfilled, (state, { payload: { user, token } }) => {
+        state.token = token;
+        state.user = user;
+      })
+      .addCase(logOut.fulfilled, (state, { payload: { user, token } }) => {
+        state.token = token;
+        state.user = user;
+      });
   },
 });
 

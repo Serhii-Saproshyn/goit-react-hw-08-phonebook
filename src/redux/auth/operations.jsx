@@ -17,3 +17,35 @@ export const register = createAsyncThunk(
     }
   }
 );
+
+export const logIn = createAsyncThunk(
+  'auth/logIn',
+  async (credentials, thunkAPI) => {
+    try {
+      const {
+        data: { token, user },
+      } = await axios.post('/users/login', credentials);
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+      return { token, user };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logOut = createAsyncThunk(
+  'auth/logOut',
+  async (credentials, thunkAPI) => {
+    try {
+      const {
+        data: { token, user },
+      } = await axios.post('/users/logout', credentials);
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+      return { token, user };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

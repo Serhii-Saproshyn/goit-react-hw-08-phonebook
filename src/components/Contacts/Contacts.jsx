@@ -21,7 +21,7 @@ export const Contacts = () => {
 
   return (
     <>
-      <ul>
+      <ul className={css.contactsList}>
         {contactLoading ? (
           <div className="loader">
             <Watch
@@ -38,7 +38,7 @@ export const Contacts = () => {
         ) : (
           filterContacts.map(({ name, id, phone }) => {
             return (
-              <li key={id}>
+              <li className={css.contactsItem} key={id}>
                 {name}: {phone}
                 <button
                   className={css.deleteBtn}

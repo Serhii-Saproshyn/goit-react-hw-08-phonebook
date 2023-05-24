@@ -1,0 +1,16 @@
+.navList {
+  display: flex;
+  gap: 12px;
+  padding: 0;
+}
+
+.navItem {
+  padding: 4px;
+  border-radius: 8px;
+  background-color: rgb(247, 154, 41);
+}
+
+.navItem:hover,
+.navItem:focus {
+  background-color: rgb(255, 128, 0);
+}
