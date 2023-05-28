@@ -3,7 +3,7 @@ import { logOut } from 'redux/auth/operations';
 import css from './UserMenu.module.css';
 
 const UserMenu = () => {
-  // const user = useSelector();
+  const email = useSelector(state => state.auth.user.email);
   const dispatch = useDispatch();
   const onClick = () => {
     dispatch(logOut());
@@ -12,7 +12,7 @@ const UserMenu = () => {
   return (
     <>
       <div className={css.userMenu}>
-        <p>{}</p>
+        <p>{email}</p>
         <button type="button" onClick={onClick}>
           LogOut
         </button>

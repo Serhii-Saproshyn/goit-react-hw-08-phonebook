@@ -1,6 +1,5 @@
 import { nanoid } from 'nanoid';
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFilterValue, setSearch } from 'redux/filter/filterSlice';
 
@@ -22,9 +21,4 @@ export const Filter = () => {
       </label>
     </>
   );
-};
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };

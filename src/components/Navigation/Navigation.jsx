@@ -1,7 +1,9 @@
 import { NavLink, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import css from './Navigation.module.css';
 
 const Navigation = () => {
+  const token = useSelector(state => state.auth.token);
   return (
     <>
       <nav>
@@ -11,21 +13,27 @@ const Navigation = () => {
               Home
             </Link>
           </li>
-          <li>
-            <NavLink className={css.navItem} to="/contacts">
-              Contacts
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className={css.navItem} to="/register">
-              Register
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className={css.navItem} to="/login">
-              Login
-            </NavLink>
-          </li>
+          {token && (
+            <li>
+              <NavLink className={css.navItem} to="/contacts">
+                Contacts
+              </NavLink>
+            </li>
+          )}
+          {!token && (
+            <>
+              <li>
+                <NavLink className={css.navItem} to="/register">
+                  Register
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={css.navItem} to="/login">
+                  Login
+                </NavLink>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </>

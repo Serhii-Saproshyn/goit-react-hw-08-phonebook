@@ -1,0 +1,24 @@
+.eye {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  background-color: transparent;
+}
+
+.eye:hover,
+.eye:focus {
+  background-color: transparent;
+}
+
+.eyeOff {
+  height: 17px;
+  width: 17px;
+  color: red;
+}
+
+.eyeOn {
+  height: 17px;
+  width: 17px;
+  color: green;
+}

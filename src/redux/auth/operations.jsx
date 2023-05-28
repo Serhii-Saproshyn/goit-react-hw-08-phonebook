@@ -29,7 +29,7 @@ export const logIn = createAsyncThunk(
 
       return { token, user };
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -44,6 +44,26 @@ export const logOut = createAsyncThunk(
       axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
       return { token, user };
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const refreshToken = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const {
+      auth: { token },
+    } = thunkAPI.getState();
+    if (!token) {
+      return;
+    }
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    try {
+      const { data: user } = await axios.get('/users/current');
+
+      return user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
