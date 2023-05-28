@@ -11,7 +11,7 @@ const SharedLayout = () => {
   const isLoading = useSelector(state => state.auth.isLoading);
   return (
     <>
-      <header>
+      <header className="css.headerLayout">
         {isLoading && (
           <div className="loader">
             <Watch
