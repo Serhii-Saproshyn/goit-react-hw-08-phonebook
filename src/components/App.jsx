@@ -18,7 +18,7 @@ export const App = () => {
     if (token) {
       dispatch(refreshToken());
     }
-  }, []);
+  }, [dispatch, token]);
 
   return (
     <Routes>
