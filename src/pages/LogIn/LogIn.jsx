@@ -40,9 +40,9 @@ const LogIn = () => {
   const getMessageError = () => {
     switch (error.response.status) {
       case 400:
-        return 'Введіть коректні данні';
+        return 'There is no account with such data yet';
       case 500:
-        return 'Спробуйте пізніше';
+        return 'Sorry, there is a problem with the server, please try again later';
 
       default:
         return error.message;

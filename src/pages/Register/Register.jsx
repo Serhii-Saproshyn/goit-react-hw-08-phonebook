@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import { useState } from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
@@ -9,6 +9,7 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const error = useSelector(state => state.auth.error);
   const dispatch = useDispatch();
   const onChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -41,6 +42,18 @@ const Register = () => {
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const getMessageError = () => {
+    switch (error.response.status) {
+      case 400:
+        return 'There is no account with such data yet';
+      case 500:
+        return 'Sorry, there is a problem with the server, please try again later';
+
+      default:
+        return error.message;
+    }
   };
 
   return (
@@ -82,6 +95,7 @@ const Register = () => {
         </label>
         <button type="submit">SignUp</button>
       </form>
+      {error && <p>{getMessageError()}</p>}
     </>
   );
 };

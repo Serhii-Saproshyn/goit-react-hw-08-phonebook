@@ -12,8 +12,8 @@ const SharedLayout = () => {
   return (
     <>
       <header className={css.headerLayout}>
-        {isLoading && (
-          <div className="loader">
+        {/* {isLoading && (
+          <div className={css.loader}>
             <Watch
               height="80"
               width="80"
@@ -25,7 +25,7 @@ const SharedLayout = () => {
               visible={true}
             />
           </div>
-        )}
+        )} */}
         <Navigation />
         {token && <UserMenu />}
       </header>

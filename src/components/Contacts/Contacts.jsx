@@ -23,7 +23,7 @@ export const Contacts = () => {
     <>
       <ul className={css.contactsList}>
         {contactLoading ? (
-          <div className="loader">
+          <div>
             <Watch
               height="80"
               width="80"
