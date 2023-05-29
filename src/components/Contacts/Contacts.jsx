@@ -8,6 +8,7 @@ import {
 } from 'redux/contacts/contacts.thunk';
 import css from './Contacts.module.css';
 import { Watch } from 'react-loader-spinner';
+import { refreshToken } from 'redux/auth/operations';
 
 export const Contacts = () => {
   const contactLoading = useSelector(setIsLoading);
@@ -16,7 +17,12 @@ export const Contacts = () => {
   const filterContacts = useSelector(setfilterContacts);
 
   useEffect(() => {
-    dispatch(getContactsThunk());
+    const fetchData = async () => {
+      await dispatch(refreshToken());
+      dispatch(getContactsThunk());
+    };
+
+    fetchData();
   }, [dispatch]);
 
   return (
