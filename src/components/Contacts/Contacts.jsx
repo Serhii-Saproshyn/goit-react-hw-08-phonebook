@@ -14,10 +14,11 @@ export const Contacts = () => {
   const dispatch = useDispatch();
   const handleDelete = id => dispatch(deleteContactsThunk(id));
   const filterContacts = useSelector(setfilterContacts);
+  const token = useSelector(state => state.auth.token);
 
   useEffect(() => {
-    dispatch(getContactsThunk());
-  }, [dispatch]);
+    dispatch(token && getContactsThunk());
+  }, [dispatch, token]);
 
   return (
     <>
