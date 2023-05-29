@@ -12,14 +12,6 @@ import PrivateRoute from './PrivateRoute/PrivateRoure';
 import PublicRoute from './PublicRoute/PublicRoute';
 
 export const App = () => {
-  const token = useSelector(state => state.auth.token);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (token) {
-      dispatch(refreshToken());
-    }
-  }, [dispatch, token]);
-
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>

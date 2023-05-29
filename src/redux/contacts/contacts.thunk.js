@@ -10,7 +10,7 @@ export const getContactsThunk = createAsyncThunk(
   'contacts',
   async (_, thunkAPI) => {
     try {
-      await thunkAPI.dispatch(refreshToken());
+      // await thunkAPI.dispatch(refreshToken());
       const {
         auth: { token },
       } = thunkAPI.getState();

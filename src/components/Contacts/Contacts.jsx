@@ -18,8 +18,10 @@ export const Contacts = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      await dispatch(refreshToken());
-      dispatch(getContactsThunk());
+      await Promise.all([
+        dispatch(refreshToken()),
+        dispatch(getContactsThunk()),
+      ]);
     };
 
     fetchData();
