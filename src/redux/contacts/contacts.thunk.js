@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { refreshToken } from 'redux/auth/operations';
 
 // const API = axios.create({
 //   baseURL: 'https://connections-api.herokuapp.com',
@@ -10,7 +9,6 @@ export const getContactsThunk = createAsyncThunk(
   'contacts',
   async (_, thunkAPI) => {
     try {
-      // await thunkAPI.dispatch(refreshToken());
       const {
         auth: { token },
       } = thunkAPI.getState();

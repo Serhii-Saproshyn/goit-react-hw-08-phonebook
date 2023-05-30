@@ -5,9 +5,7 @@ import Register from 'pages/Register/Register';
 import LogIn from 'pages/LogIn/LogIn';
 import NotFound from 'pages/NotFound/NotFound';
 import ContactsPage from 'pages/ContactsPage/ContactsPage';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { refreshToken } from 'redux/auth/operations';
+
 import PrivateRoute from './PrivateRoute/PrivateRoure';
 import PublicRoute from './PublicRoute/PublicRoute';
 
